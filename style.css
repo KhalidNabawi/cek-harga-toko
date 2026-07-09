@@ -1,0 +1,218 @@
+/* =====================================================================
+   CEK HARGA TOKO — STYLE
+   Prinsip desain: sederhana, tombol besar, tulisan harga sangat besar,
+   mudah digunakan oleh siapa saja termasuk orang tua.
+   ===================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f2f4f7;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+.app-header {
+  background: #1565c0;
+  color: white;
+  text-align: center;
+  padding: 16px;
+}
+
+.app-header h1 {
+  font-size: 22px;
+}
+
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* --- Sistem tampilan berganti (hanya 1 view aktif) --- */
+.view {
+  display: none;
+}
+.view.active {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* --- Scanner --- */
+#reader {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  min-height: 300px;
+}
+
+.scan-guide {
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+}
+
+/* --- Kartu Hasil Harga --- */
+.hasil-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.hasil-card .label {
+  font-size: 16px;
+  color: #777;
+  margin-top: 12px;
+}
+
+.hasil-card #hasil-nama {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.hasil-card #hasil-harga {
+  font-size: 64px;         /* Sangat besar agar mudah dibaca */
+  font-weight: 800;
+  color: #1565c0;
+  margin-top: 8px;
+  line-height: 1.1;
+}
+
+/* --- Kartu Produk Tidak Ditemukan --- */
+.empty-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.empty-icon {
+  font-size: 48px;
+}
+
+.empty-card h2 {
+  font-size: 24px;
+  margin-top: 8px;
+  color: #c62828;
+}
+
+.muted {
+  color: #888;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+/* --- Tombol --- */
+.btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  min-height: 64px; /* mudah disentuh */
+}
+
+.btn-primary {
+  background: #1565c0;
+  color: white;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* --- Form Tambah Produk --- */
+.form-title {
+  font-size: 24px;
+  text-align: center;
+}
+
+#form-produk {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+#form-produk label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+#form-produk input {
+  font-size: 20px;
+  padding: 14px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  margin-top: 4px;
+}
+
+#form-produk input:focus {
+  outline: none;
+  border-color: #1565c0;
+}
+
+#form-produk .btn {
+  margin-top: 16px;
+}
+
+/* --- Loading & Toast --- */
+.loading {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  z-index: 999;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2e7d32;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  text-align: center;
+  max-width: 90%;
+}
+
+.toast.error {
+  background: #c62828;
+}
+
+.hidden {
+  display: none !important;
+}

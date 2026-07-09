@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Cek Harga Toko</title>
+
+  <!-- PWA: manifest agar bisa di-install di Android -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1565c0" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Library scanner barcode: cepat & stabil, mendukung EAN-13, CODE128, dll -->
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>🛒 Cek Harga Toko</h1>
+  </header>
+
+  <main id="app">
+
+    <!-- ======================= LAYAR 1: SCANNER ======================= -->
+    <section id="view-scanner" class="view active">
+      <div id="reader"></div>
+      <div class="scan-guide">Arahkan kamera ke barcode</div>
+
+      <button id="btn-manual" class="btn btn-secondary">
+        ➕ Tambah Produk Manual
+      </button>
+    </section>
+
+    <!-- ======================= LAYAR 2: HASIL DITEMUKAN ======================= -->
+    <section id="view-hasil" class="view">
+      <div class="hasil-card">
+        <p class="label">Nama Barang</p>
+        <h2 id="hasil-nama">-</h2>
+
+        <p class="label">Harga Jual</p>
+        <h1 id="hasil-harga">Rp 0</h1>
+      </div>
+
+      <button id="btn-scan-lagi" class="btn btn-primary">🔄 Scan Lagi</button>
+    </section>
+
+    <!-- ======================= LAYAR 3: TIDAK DITEMUKAN ======================= -->
+    <section id="view-tidak-ada" class="view">
+      <div class="empty-card">
+        <p class="empty-icon">❓</p>
+        <h2>Produk belum terdaftar.</h2>
+        <p id="tidak-ada-barcode" class="muted"></p>
+      </div>
+
+      <button id="btn-tambah" class="btn btn-primary">➕ Tambah Produk</button>
+      <button id="btn-batal-tidak-ada" class="btn btn-secondary">🔄 Scan Lagi</button>
+    </section>
+
+    <!-- ======================= LAYAR 4: FORM TAMBAH PRODUK ======================= -->
+    <section id="view-form" class="view">
+      <h2 class="form-title">Tambah Produk</h2>
+
+      <form id="form-produk">
+        <label for="input-barcode">Barcode / Kode</label>
+        <input type="text" id="input-barcode" placeholder="Contoh: PM001" required />
+
+        <label for="input-nama">Nama Barang</label>
+        <input type="text" id="input-nama" placeholder="Contoh: Permen Kopiko" required />
+
+        <label for="input-harga">Harga Jual (Rp)</label>
+        <input type="number" id="input-harga" placeholder="Contoh: 500" min="0" required />
+
+        <button type="submit" class="btn btn-primary">💾 Simpan</button>
+        <button type="button" id="btn-batal-form" class="btn btn-secondary">Batal</button>
+      </form>
+    </section>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="loading hidden">Memproses...</div>
+
+    <!-- Notifikasi toast -->
+    <div id="toast" class="toast hidden"></div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
